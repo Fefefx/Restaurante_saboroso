@@ -2,9 +2,13 @@
 
 *Implementação de um site para gereciamento das rotinas administrativas de um restaurante.*
 
+![Página Inicial restaurante saboroso](https://raw.githubusercontent.com/Fefefx/Restaurante_saboroso/master/resources/site.png "Página Inicial restaurante saboroso")
+
 O projeto restaurante saboroso é um sistema online de gerenciamento para restaurantes feito em Node.js. Desenvolvido durante o curso completo de JavaScript da [Hcode](https://hcode.com.br/ "Hcode"), ele permite fazer reservas, gerenciar menus, inscrever clientes em listas de e-mail, contatar os donos do estabelecimento, gerenciar usuários, ver gráficos de reservas e acompanhar em tempo real o andamento do negócio, graças a Websocket.
 
 O dashboard dos administradores foi implementado na rota /admin, usando como base o template Admin Lte 2. Para garantir o controle de acesso foi desenvolvido um middleware, que acomplado ao módulo express-session gerencia as sessões ativas dos usuários, salvando-as em um banco de dados NoSql Redis.
+
+![Painel de Controle](https://raw.githubusercontent.com/Fefefx/Restaurante_saboroso/master/resources/image-admin.png "Painel de Controle")
 
 Para persistência de dados o projeto usa do MySql 8, utilizando de funções nativas dele para agilizar consultas e gerar paginição de um grande volume de dados. Dentro da pasta *resources* no diretório *db*, você encontra exemplos das querys utilizadas no projeto. Caso queira ver como a paginação foi implementada, veja a classe *Pagination.js* dentro do diretório *inc*.
 
@@ -17,7 +21,7 @@ Para persistência de dados o projeto usa do MySql 8, utilizando de funções na
 5. **Módulo Socket.io** - disponível em: [https://socket.io/](https://socket.io/ "https://socket.io/")
 6. **Banco de dados Redis** - disponível em: [https://redis.io/](https://redis.io/ "https://redis.io/")
 7. **Gerenciador de sessão express-session** - disponível em: [https://www.npmjs.com/package/express-session](https://www.npmjs.com/package/express-session "https://www.npmjs.com/package/express-session")
-8. **Template Admin Lte 2 ** - disponível em: [https://adminlte.io/themes/AdminLTE/index2.html](https://adminlte.io/themes/AdminLTE/index2.html "https://adminlte.io/themes/AdminLTE/index2.html")
+8. **Template Admin Lte 2** - disponível em: [https://adminlte.io/themes/AdminLTE/index2.html](https://adminlte.io/themes/AdminLTE/index2.html "https://adminlte.io/themes/AdminLTE/index2.html")
 9. **Conector mysql2** - disponível em: [https://www.npmjs.com/package/mysql2](https://www.npmjs.com/package/mysql2 "https://www.npmjs.com/package/mysql2")
 10. **Embedded JavaScript templating** - disponível em: [https://ejs.co/](https://ejs.co/ "https://ejs.co/")
 11. **Módulo de execução Nodemon** - disponível em: [https://www.npmjs.com/package/nodemon](https://www.npmjs.com/package/nodemon "https://www.npmjs.com/package/nodemon")
