@@ -1,0 +1,5 @@
+#Ignora as dependências do node
+node_modules/
+
+#Ignora as dependências do bower (arquivos de formatação do Front-end)
+public/admin/bower_components/
