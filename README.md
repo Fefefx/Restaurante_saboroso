@@ -10,7 +10,7 @@ O dashboard dos administradores foi implementado na rota /admin, usando como bas
 
 ![Painel de Controle](https://raw.githubusercontent.com/Fefefx/Restaurante_saboroso/master/resources/image-admin.png "Painel de Controle")
 
-Para persistência de dados o projeto usa do MySql 8, utilizando de funções nativas dele para agilizar consultas e gerar paginição de um grande volume de dados. Dentro da pasta *resources* no diretório *db*, você encontra exemplos das querys utilizadas no projeto. Caso queira ver como a paginação foi implementada, veja a classe *Pagination.js* dentro do diretório *inc*.
+Para persistência de dados o projeto usa do MySql, utilizando de funções nativas para agilizar consultas e gerar paginição de um grande volume de dados. Dentro da pasta *resources* no diretório *database*, você encontra exemplos das querys utilizadas no projeto. Caso queira ver como a paginação foi implementada, veja a classe *Pagination.js* dentro do diretório *inc*.
 
 ### Tecnologias utilizadas
 
@@ -28,9 +28,11 @@ Para persistência de dados o projeto usa do MySql 8, utilizando de funções na
 
 ## Execução
 
-Para executar o projeto. Abra o diretório principal e execute o comando:
+Para executar o projeto. Abra o diretório principal e execute os seguintes comandos:
 
 `npm install`
+
+`npm install --only=dev`
 
 Isso irá resolver as dependências do Back-End instalando os módulos necessários para o funcionamento do aplicação. A gestão das dependências do Front-End é feita pelo Bower, assim caso não o tenha instalado, você pode fazê-lo pelo seguinte comando:
 
@@ -40,29 +42,12 @@ Para restaurar as dependência do Front-End acesse a pasta *public* e em seguida
 
 `bower install`
 
-Após isso é chegada a hora de configurar o banco de dados. Dentro do diretório *inc* da pasta principal existe o arquivo *db.js*. Lá você verá um objeto como o abaixo:
-
-```javascript
-const connection = mysql.createConnection({
-    host: 'YOUR-HOST',
-    user: 'YOUR-USER',
-    database: 'YOUR-DATABASE',
-    password: 'YOUR-PASSWORD',
-    multipleStatements: true
-});
-```
-Altere as propriedades do objeto de conexão para as configurações do seu banco de dados, mas **ATENÇÃO** não remova ou altere a opção *multipleStatements*, pois ela permite a paginação dos dados vindos do banco.
-
-Dentro da pasta *resources -> database*  existe o arquivo *database_structure.sql* com a modelagem do banco de dados. Basta executar esse arquivo em uma query do MySQL para criar o banco. Caso queira povoar a tabela de reservas para teste da paginação, você deve executar o arquivo *reserve_test_data.sql*.  
+Após isso é chegada a hora de configurar o banco de dados. Crie um arquivo chamado .env com o mesmo conteúdo do arquivo .env-example. Atribua as propriedades de conexão do seu banco de dados as variáveis de ambiente, mantendo apenas o nome do banco como saboroso. Dentro da pasta *resources -> database*  existe o arquivo *database_structure.sql* com a modelagem do banco de dados. Basta executar esse arquivo em uma query do MySQL para criar o banco. Caso queira povoar a tabela de reservas para teste da paginação, você deve executar o arquivo *reserve_test_data.sql*.  
 
 Os dados de sessão são salvos no database Redis, porém como esse banco apresenta certa incompatibilidade com o Microsoft Windows, nesse sistema instale o arquivo *Redis-x64-3.2.100.msi* presente na pasta *resources* para fazer funcionar a aplicação.
 
-Para executar o programa é necessário o módulo nodemon. Esse módulo pode ser instalado com o seguinte comando:
-
-`npm install -g nodemon`
-
-Por fim, dentro do diretório principal rode o seguinte comando para iniciar a aplicação:
+Por fim, dentro do diretório principal rode o seguinte comando para iniciar o app:
 
 `npm start`
 
-O servidor será iniciado. Para testar o site acesse a url *localhost:3000*, que levará a parte pública da aplicação. A parte privada pode ser acessada pelo endereço *localhost:3000/admin*, cadastre um usuário manualmente na tabela tb_users do banco de dados para fazer login na aplicação.
+O servidor será inicializado. Para testar o site acesse a url *localhost:3000*, que levará a parte pública da aplicação. A parte privada pode ser acessada pelo endereço *localhost:3000/admin*, cadastre um usuário manualmente na tabela tb_users do banco de dados para fazer login na aplicação.

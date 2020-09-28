@@ -16,7 +16,7 @@ module.exports = {
     },
     save(fields, files) {
         return new Promise((resolve, reject) => {
-            fields.photo = `images/${path.parse(files.photo.path).base}`
+            fields.photo = `images/upload/${path.parse(files.photo.path).base}`
             let query, queryPhoto = '', params = [
                 fields.title,
                 fields.description,

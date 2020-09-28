@@ -1,5 +1,11 @@
-#Ignora as dependências do node
+#Dependências do node
 node_modules/
 
-#Ignora as dependências do bower (arquivos de formatação do Front-end)
+#Dependências do bower (arquivos de formatação do Front-end)
 public/admin/bower_components/
+
+#Variáveis de ambiente
+.env
+
+#Upload de imagens
+public/images/upload/*

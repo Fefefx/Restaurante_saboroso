@@ -13,6 +13,9 @@ var path = require('path');
 var bodyParser = require('body-parser')
 
 var app = express();
+
+// Configuração do Socket.io {
+
 var http = http.Server(app);
 var io = socket(http);
 
@@ -20,14 +23,22 @@ io.on('connection',function (socket) {
   console.log('Novo usuário conectado !');
 });
 
+//} Socket.io
+
+// Requisição das rotas do site  com  passagem do Socket via construtor {
+
 var indexRouter = require('./routes/index')(io);
 var adminRouter = require('./routes/admin')(io);
+
+// } Rotas
+
+// Upload de imagens e recebimento de formulário {
 
 app.use(function (req, res, next) {
   req.body = {};
   if (req.method === 'POST') {
     var form = formidable.IncomingForm({
-      uploadDir: path.join(__dirname, "/public/images"),
+      uploadDir: path.join(__dirname, "/public/images/upload"),
       keepExtensions: true
     });
     form.parse(req, function (err, fields, files) {
@@ -41,9 +52,16 @@ app.use(function (req, res, next) {
   }
 });
 
-// view engine setup
+// } Imagens e formulário
+
+// View engine ejs {
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// } ejs
+
+//Acesso ao redis e criação da sessão de usuário {
 
 var redisClient = redis.createClient();
 
@@ -56,8 +74,11 @@ app.use(session({
   saveUninitialized: true
 }));
 
+// } Sessão de usuário
+
 app.use(logger('dev'));
-//app.use(express.json()); //Incompatível com a versão 4.15 do express
+//Incompatível com a versão 4.15 do express
+//app.use(express.json()); 
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
