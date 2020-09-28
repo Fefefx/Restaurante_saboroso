@@ -42,6 +42,8 @@ Para restaurar as dependência do Front-End acesse a pasta *public* e em seguida
 
 `bower install`
 
+**Atenção:** Para salvar as fotos dos pratos, abra a pasta public vá até images e nesse diretório crie uma pasta com o nome de upload. 
+
 Após isso é chegada a hora de configurar o banco de dados. Crie um arquivo chamado .env com o mesmo conteúdo do arquivo .env-example. Atribua as propriedades de conexão do seu banco de dados as variáveis de ambiente, mantendo apenas o nome do banco como saboroso. Dentro da pasta *resources -> database*  existe o arquivo *database_structure.sql* com a modelagem do banco de dados. Basta executar esse arquivo em uma query do MySQL para criar o banco. Caso queira povoar a tabela de reservas para teste da paginação, você deve executar o arquivo *reserve_test_data.sql*.  
 
 Os dados de sessão são salvos no database Redis, porém como esse banco apresenta certa incompatibilidade com o Microsoft Windows, nesse sistema instale o arquivo *Redis-x64-3.2.100.msi* presente na pasta *resources* para fazer funcionar a aplicação.
